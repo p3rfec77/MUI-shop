@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Basket from './Basket';
 import BasketList from './BasketList';
 import Header from './Header';
 import GoodsList from './GoodsList';
@@ -12,6 +13,7 @@ const App = () => {
     const [order, setOrder] = useState([]);
     const [search, setSearch] = useState('');
     const [products, setProducts] = useState(goods);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     const handleChange = (e) => {
         if (!e.target.value) {
@@ -68,23 +70,18 @@ const App = () => {
 
     return (
         <>
-            <Header />
-            <div className='App'>
-                <Container sx={{ mt: '1rem' }}>
-                    <Search
-                        value={search}
-                        onChange={handleChange}
-                    />
-                    <GoodsList
-                        goods={products}
-                        setOrder={addToOrder}
-                    />
-                    <BasketList
-                        order={order}
-                        setOrder={removeFromOrder}
-                    />
-                </Container>
-            </div>
+            <Header handleCart={() => setIsCartOpen(true)} />
+            <Container sx={{ mt: '1rem' }}>
+                <Search
+                    value={search}
+                    onChange={handleChange}
+                />
+                <GoodsList
+                    goods={products}
+                    setOrder={addToOrder}
+                />
+            </Container>
+            <Basket cartOpen={isCartOpen} closeCart={() => setIsCartOpen(false)} order={order} removeFromOrder={removeFromOrder} />
         </>
     );
 }
