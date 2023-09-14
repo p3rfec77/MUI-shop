@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import Basket from './Basket';
-import BasketList from './BasketList';
 import Header from './Header';
 import GoodsList from './GoodsList';
 import Search from './Search';
@@ -70,7 +69,7 @@ const App = () => {
 
     return (
         <>
-            <Header handleCart={() => setIsCartOpen(true)} />
+            <Header handleCart={() => setIsCartOpen(true)} orderLen={order.length} />
             <Container sx={{ mt: '1rem' }}>
                 <Search
                     value={search}
