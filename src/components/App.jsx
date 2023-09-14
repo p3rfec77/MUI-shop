@@ -4,6 +4,7 @@ import Basket from './Basket';
 import Header from './Header';
 import GoodsList from './GoodsList';
 import Search from './Search';
+import Snack from './Snack';
 
 import { goods } from '../data/goods';
 import { Container } from '@mui/material';
@@ -13,6 +14,7 @@ const App = () => {
     const [search, setSearch] = useState('');
     const [products, setProducts] = useState(goods);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isSnackOpen, setIsSnackOpen] = useState(false);
 
     const handleChange = (e) => {
         if (!e.target.value) {
@@ -61,6 +63,8 @@ const App = () => {
                 ],
             );
         }
+
+        setIsSnackOpen(true);
     };
 
     const removeFromOrder = (goodsItem) => {
@@ -81,6 +85,7 @@ const App = () => {
                 />
             </Container>
             <Basket cartOpen={isCartOpen} closeCart={() => setIsCartOpen(false)} order={order} removeFromOrder={removeFromOrder} />
+            <Snack isOpen={isSnackOpen} handleClose={() => setIsSnackOpen(false)} />
         </>
     );
 }
