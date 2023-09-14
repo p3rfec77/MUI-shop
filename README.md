@@ -1,6 +1,4 @@
-# Стартовый проект для использования Material UI
+# MUI Shop
+Deploy: https://rococo-cascaron-2a54e9.netlify.app/
 
-Для начала работы необходимо установить зависимости:
-```
-npm install
-```
+Project for test and practice material UI
