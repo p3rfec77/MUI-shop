@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import BasketList from './BasketList';
+import Header from './Header';
 import GoodsList from './GoodsList';
 import Search from './Search';
 
@@ -65,22 +66,25 @@ const App = () => {
     };
 
     return (
-        <div className='App'>
-            <div className='container'>
-                <Search
-                    value={search}
-                    onChange={handleChange}
-                />
-                <GoodsList
-                    goods={products}
-                    setOrder={addToOrder}
-                />
-                <BasketList
-                    order={order}
-                    setOrder={removeFromOrder}
-                />
+        <>
+            <Header />
+            <div className='App'>
+                <div className='container'>
+                    <Search
+                        value={search}
+                        onChange={handleChange}
+                    />
+                    <GoodsList
+                        goods={products}
+                        setOrder={addToOrder}
+                    />
+                    <BasketList
+                        order={order}
+                        setOrder={removeFromOrder}
+                    />
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
